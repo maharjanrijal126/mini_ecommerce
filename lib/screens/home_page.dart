@@ -4,6 +4,8 @@ import '../data/product_data.dart';
 import '../widgets/banner_card.dart';
 import '../widgets/category_item.dart';
 import '../widgets/product_card.dart';
+import 'category_page.dart';
+import 'product_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,7 +25,9 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Cart will be added later.'),
+                  content: Text(
+                    'Cart will be added later.',
+                  ),
                 ),
               );
             },
@@ -46,7 +50,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 200,
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                ),
                 scrollDirection: Axis.horizontal,
                 itemCount: banners.length,
                 itemBuilder: (context, index) {
@@ -65,7 +71,9 @@ class HomePage extends StatelessWidget {
 
             // Categories
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              padding: EdgeInsets.symmetric(
+                horizontal: 18,
+              ),
               child: Text(
                 'Categories',
                 style: TextStyle(
@@ -80,7 +88,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 100,
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                ),
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
@@ -89,9 +99,14 @@ class HomePage extends StatelessWidget {
                   return CategoryItem(
                     category: category,
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('$category selected'),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CategoryPage(
+                              category: category,
+                            );
+                          },
                         ),
                       );
                     },
@@ -104,7 +119,9 @@ class HomePage extends StatelessWidget {
 
             // Products
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              padding: EdgeInsets.symmetric(
+                horizontal: 18,
+              ),
               child: Text(
                 'Popular Products',
                 style: TextStyle(
@@ -117,7 +134,9 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 10),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 14,
+              ),
               child: GridView.builder(
                 itemCount: products.length,
                 shrinkWrap: true,
@@ -130,8 +149,24 @@ class HomePage extends StatelessWidget {
                   childAspectRatio: 0.68,
                 ),
                 itemBuilder: (context, index) {
-                  return ProductCard(
-                    product: products[index],
+                  final product = products[index];
+
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ProductDetailsPage(
+                              product: product,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: ProductCard(
+                      product: product,
+                    ),
                   );
                 },
               ),
