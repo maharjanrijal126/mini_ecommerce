@@ -18,7 +18,37 @@ Navigation: Allows users to move between the home, category, and product details
 Add to Cart Feedback: Displays a message when the Add to Cart button is pressed.
 
 ## Screenshots
-![alt text](cart_demo.png) ![alt text](cart_demo2.png) ![alt text](category_beauty.png) ![alt text](category_electronics.png) ![alt text](category_fashion.png) ![alt text](category_shoe.png) ![alt text](home.png) ![alt text](home2.png)
+
+### Home Page
+
+![Home Page](screenshots/home.png)
+
+![Home Page - Alternative View](screenshots/home2.png)
+
+### Product and Cart Demo
+
+![Cart Demo](screenshots/cart_demo.png)
+
+![Cart Demo - Alternative View](screenshots/cart_demo2.png)
+
+### Category Pages
+
+#### Beauty
+
+![Beauty Category](screenshots/category_beauty.png)
+
+#### Electronics
+
+![Electronics Category](screenshots/category_electronics.png)
+
+#### Fashion
+
+![Fashion Category](screenshots/category_fashion.png)
+
+#### Shoes
+
+![Shoes Category](screenshots/category_shoe.png)
+
 
 
 ## Packages Used
