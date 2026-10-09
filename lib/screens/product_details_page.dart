@@ -21,14 +21,24 @@ class ProductDetailsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            // Product image
             SizedBox(
               width: double.infinity,
-              height: 320,
+              height: 300,
               child: Image.network(
                 product.image,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey.shade200,
+                    child: const Center(
+                      child: Icon(
+                        Icons.image_not_supported_outlined,
+                        size: 60,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
 
@@ -37,8 +47,6 @@ class ProductDetailsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  // Product name
                   Text(
                     product.name,
                     style: const TextStyle(
@@ -49,22 +57,30 @@ class ProductDetailsPage extends StatelessWidget {
 
                   const SizedBox(height: 8),
 
-                  // Category
-                  Text(
-                    product.category,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey.shade600,
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.indigo.shade50,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      product.category,
+                      style: const TextStyle(
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
 
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 16),
 
-                  // Price
                   Text(
                     'Rs. ${product.price.toStringAsFixed(0)}',
                     style: const TextStyle(
-                      fontSize: 23,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.indigo,
                     ),
@@ -72,7 +88,6 @@ class ProductDetailsPage extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  // Rating
                   Row(
                     children: [
                       const Icon(
@@ -81,20 +96,18 @@ class ProductDetailsPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        product.rating.toString(),
+                        '${product.rating} / 5',
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
 
-                  // Description
                   const Text(
-                    'Description',
+                    'Product Description',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -105,32 +118,39 @@ class ProductDetailsPage extends StatelessWidget {
 
                   Text(
                     product.description,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       height: 1.5,
+                      color: Colors.grey.shade700,
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 28),
 
-                  // Add to cart button
                   SizedBox(
                     width: double.infinity,
                     height: 52,
-                    child: ElevatedButton(
+                    child: ElevatedButton.icon(
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              '${product.name} added to cart',
+                        ScaffoldMessenger.of(context)
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                '${product.name} added to cart',
+                              ),
+                              behavior: SnackBarBehavior.floating,
                             ),
-                          ),
-                        );
+                          );
                       },
-                      child: const Text(
+                      icon: const Icon(
+                        Icons.shopping_bag_outlined,
+                      ),
+                      label: const Text(
                         'Add to Cart',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
