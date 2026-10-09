@@ -1,17 +1,34 @@
 # mini_ecommerce
 
-A new Flutter project.
+Name: Rijal Maharjan
 
-## Getting Started
+University id: 2527640
 
-This project is a starting point for a Flutter application.
+Mobile Application Development (MAD)
 
-A few resources to get you started if this is your first Flutter project:
+## Description
+This project is a mini e-commerce mobile application developed using Flutter and Dart. It allows users to browse product categories, explore products, and view product details through a simple and user-friendly interface.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Features
+Home Page: Displays promotional banners, product categories, and popular products.
+Image Carousel: Automatically displays promotional banners using the Carousel Slider package.
+Category Page: Shows products belonging to the selected category.
+Product Details: Displays product images, names, prices, ratings, and descriptions.
+Navigation: Allows users to move between the home, category, and product details pages.
+Add to Cart Feedback: Displays a message when the Add to Cart button is pressed.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+![alt text](cart_demo.png) ![alt text](cart_demo2.png) ![alt text](category_beauty.png) ![alt text](category_electronics.png) ![alt text](category_fashion.png) ![alt text](category_shoe.png) ![alt text](home.png) ![alt text](home2.png)
+
+
+## Packages Used
+carousel_slider: Used to create an automatically sliding promotional banner carousel.
+
+Flutter Material: Used to build the application's interface with standard Flutter widgets.
+
+## How to Run
+Open the project in Android Studio.
+Open the terminal in the project directory.
+Run flutter pub get to install the required dependencies.
+Start an Android emulator or connect a device.
+Run flutter run to launch the application.

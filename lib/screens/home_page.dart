@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/product_data.dart';
-import '../widgets/banner_card.dart';
+import '../widgets/banner_carousel.dart';
 import '../widgets/category_item.dart';
 import '../widgets/product_card.dart';
 import 'category_page.dart';
@@ -43,37 +43,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 15),
 
-            // Banners
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                ),
-                scrollDirection: Axis.horizontal,
-                itemCount: banners.length,
-                itemBuilder: (context, index) {
-                  final banner = banners[index];
-
-                  return BannerCard(
-                    title: banner['title']!,
-                    subtitle: banner['subtitle']!,
-                    image: banner['image']!,
-                  );
-                },
-              ),
-            ),
+            // External package carousel
+            const BannerCarousel(),
 
             const SizedBox(height: 25),
 
-            // Categories
+            // Categories heading
             const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 18,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 18),
               child: Text(
                 'Categories',
                 style: TextStyle(
@@ -85,6 +64,7 @@ class HomePage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // Horizontal category list
             SizedBox(
               height: 100,
               child: ListView.builder(
@@ -117,11 +97,9 @@ class HomePage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // Products
+            // Products heading
             const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 18,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 18),
               child: Text(
                 'Popular Products',
                 style: TextStyle(
@@ -133,10 +111,9 @@ class HomePage extends StatelessWidget {
 
             const SizedBox(height: 10),
 
+            // Product grid
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 14,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 14),
               child: GridView.builder(
                 itemCount: products.length,
                 shrinkWrap: true,
